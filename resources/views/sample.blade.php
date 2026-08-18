@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Starting of my Forum</h1>
+    <H1>SAMPLE PAGE</H1>
 </body>
 </html>
