@@ -9,22 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function homePage() {
-        if (Auth::check()) {
-            return view('home');
-        } else {
-            return view('login');
-        }
-    }
-
-    public function registerPage() {
-        return view('register');
-    }
-
-    public function signinUser() {
-        return view('home');
-    }
-
     public function registerUser (Request $request) {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -40,7 +24,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect('/home');
+        return redirect('/');
     }
 
     public function loginUser (Request $request) {
@@ -51,7 +35,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect('/home')->with('sucess', 'Welcome back!');
+            return redirect('/')->with('sucess', 'Welcome back!');
         }
 
         return back()
@@ -65,4 +49,5 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
 }

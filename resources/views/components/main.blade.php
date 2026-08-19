@@ -21,6 +21,10 @@
         </div>
     </div>
     <h1>Main</h1>
+    <form action="/logout" method="POST">
+            @csrf
+            <button type="submit">Logout</button>
+    </form>
     {{ $slot }}
 </body>
 </html>

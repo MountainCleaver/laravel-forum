@@ -8,11 +8,11 @@
         @endforeach
     </div>
 @endif
-        <form action="/signin" method="post" class="flex flex-col gap-2">
+        <form action="/login" method="post" class="flex flex-col gap-2" id="login-form">
             @csrf
             <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email">
             <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password">
-            <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit">Sign In</button>
+            <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit" id="login-form-btn">Sign In</button>
         </form>
         <div class="flex flex-row justify-between px-2">
             <a href="/sample" class="hover:underline">Forgot Password</a>
@@ -30,3 +30,8 @@
         </div>
     </div>
 </x-index>
+<script>
+    document.getElementById('login-form').addEventListener('submit', () => {
+        document.getElementById('login-form-btn').disabled = true;
+    });
+</script>

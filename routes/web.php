@@ -2,22 +2,28 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Test;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /* VIEW ROUTES */
-Route::get('/', [AuthController::class, 'homePage']);
-Route::get('/register',  [AuthController::class, 'registerPage'])
+Route::get('/', [ViewController::class, 'index']);
+
+Route::get('/home', [ViewController::class, 'toHome'])
+    ->name('toHome');
+Route::get('/login', [ViewController::class, 'toLogin'])
+    ->name('toLogin');
+Route::get('/register', [ViewController::class, 'toRegister'])
     ->name('toRegister');
-Route::post('/home', [AuthController::class, 'signinUser']);
-Route::post('/sample', [Test::class, 'servePage']);
-Route::get('/sample', [Test::class, 'servePage']);
-
-Route::get('/home', function(){
-    return view('home');
-});
-
-Route::post('logout', [AuthController::class, 'logoutUser']);
 
 /* AUTH ROUTES */
+Route::post('/login', [AuthController::class, 'loginUser']);
 Route::post('/register', [AuthController::class, 'registerUser']);
-Route::post('/signin', [AuthController::class, 'loginUser']);
+Route::post('logout', [AuthController::class, 'logoutUser']);
+
+
+
+
+
+Route::get('/sample', function () {
+    return view('sample');
+});

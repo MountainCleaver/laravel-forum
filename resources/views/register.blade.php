@@ -8,13 +8,13 @@
                 @endforeach
             </div>
         @endif
-        <form action="/register" method="post" class="flex flex-col gap-2">
+        <form action="/register" method="post" class="flex flex-col gap-2" id="register-form">
             @csrf
             <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email">
             <input class="px-2.5 rounded-md h-10 border border-black" type="text" name="name" id="" placeholder="Username">
             <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password">
             <input class="px-2.5 rounded-md h-10 border" type="password" name="password_confirmation" id="" placeholder="Confirm Password">
-            <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit">Sign In</button>
+            <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit" id="register-form-btn">Register</button>
         </form>
         <div class="flex flex-row px-2">
             <a href="/" class= "ml-auto hover:underline">Login</a>
