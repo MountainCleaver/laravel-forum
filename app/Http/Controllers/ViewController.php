@@ -48,4 +48,11 @@ class ViewController extends Controller
         return view('home');
     }
 
+    public function toResults(Request $request){
+        if (!Auth::check()) {
+            return redirect(route('toLogin'));
+        }
+        return view('search_results')->with('search', $request->input('search'));
+    }
+
 }

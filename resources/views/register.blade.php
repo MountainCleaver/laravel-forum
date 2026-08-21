@@ -10,10 +10,10 @@
         @endif
         <form action="/register" method="post" class="flex flex-col gap-2" id="register-form">
             @csrf
-            <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email">
-            <input class="px-2.5 rounded-md h-10 border border-black" type="text" name="name" id="" placeholder="Username">
-            <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password">
-            <input class="px-2.5 rounded-md h-10 border" type="password" name="password_confirmation" id="" placeholder="Confirm Password">
+            <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email" required>
+            <input class="px-2.5 rounded-md h-10 border border-black" type="text" name="name" id="" placeholder="Username" required>
+            <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password" required minlength="8">
+            <input class="px-2.5 rounded-md h-10 border" type="password" name="password_confirmation" id="" placeholder="Confirm Password" required>
             <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit" id="register-form-btn">Register</button>
         </form>
         <div class="flex flex-row px-2">
@@ -30,3 +30,9 @@
         </div>
     </div>
 </x-index>
+<script>
+    document.getElementById('register-form').addEventListener('submit', () => {
+        document.getElementById('register-form-btn').disabled = true;
+        document.getElementById('register-form-btn').textContent = 'Loading...'
+    });
+</script>

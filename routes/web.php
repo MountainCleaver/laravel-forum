@@ -27,3 +27,8 @@ Route::post('logout', [AuthController::class, 'logoutUser']);
 Route::get('/sample', function () {
     return view('sample');
 });
+Route::post('/sample', function () {
+    return view('sample');
+});
+
+Route::post('/search', [ViewController::class, 'toResults']);

@@ -2,16 +2,16 @@
     <div class="flex flex-col min-w-full p-10">
         <h2 class="text-3xl mb-10">Login</h2>
         @if ($errors->any())
-    <div class="text-red-500 mb-4">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif
+            <div class="text-red-500 mb-4">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
         <form action="/login" method="post" class="flex flex-col gap-2" id="login-form">
             @csrf
-            <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email">
-            <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password">
+            <input class="px-2.5 rounded-md h-10 border border-black" type="email" name="email" id="" placeholder="Email" required>
+            <input class="px-2.5 rounded-md h-10 border" type="password" name="password" id="" placeholder="Password" required>
             <button class="bg-pink-500 text-white px-4 py-2 rounded-md hover:bg-pink-600 cursor-pointer focus:ring-2 focus:ring-pink-400" type="submit" id="login-form-btn">Sign In</button>
         </form>
         <div class="flex flex-row justify-between px-2">
@@ -33,5 +33,6 @@
 <script>
     document.getElementById('login-form').addEventListener('submit', () => {
         document.getElementById('login-form-btn').disabled = true;
+        document.getElementById('login-form-btn').textContent = 'Loading...'
     });
 </script>
